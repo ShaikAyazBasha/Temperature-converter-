@@ -1,0 +1,96 @@
+<html>
+<head>
+  <title>Temperature Converter</title>
+  <style>
+    
+    body 
+     {
+    background-image: url("Downloads/intern.jpg");
+    background-size: cover;
+        background-position: center;
+
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+    input[type="number"] {
+      width: 200px;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    button {
+      width: 100px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #3e8e41;
+    }
+    #result {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Temperature Converter</h1>
+  <form>
+    <label for="celsius">Celsius:</label>
+    <input type="number" id="celsius" placeholder="Enter temperature in Celsius" required>
+
+    <label for="fahrenheit">Fahrenheit:</label>
+    <input type="number" id="fahrenheit" placeholder="Enter temperature in Fahrenheit" required>
+
+    <label for="kelvin">Kelvin:</label>
+    <input type="number" id="kelvin" placeholder="Enter temperature in Kelvin" required>
+
+    <button type="button" onclick="convert()">Convert</button>
+
+    <div id="result"></div>
+  </form>
+
+  <script>
+    function convert() {
+      // Get the input values
+      let celsius = parseFloat(document.getElementById("celsius").value);
+      let fahrenheit = parseFloat(document.getElementById("fahrenheit").value);
+      let kelvin = parseFloat(document.getElementById("kelvin").value);
+
+      // Convert Celsius to Fahrenheit and Kelvin
+      fahrenheit = (celsius * 9/5) + 32;
+      kelvin = celsius + 273.15;
+
+      // Convert Fahrenheit to Celsius and Kelvin
+      celsius = (fahrenheit - 32) * 5/9;
+      kelvin = (fahrenheit + 459.67) * 5/9;
+
+      // Convert Kelvin to Celsius and Fahrenheit
+      celsius = kelvin - 273.15;
+      fahrenheit = (kelvin * 9/5) - 459.67;
+
+      // Display the results
+      document.getElementById("celsius").value = celsius.toFixed(2);
+      document.getElementById("fahrenheit").value = fahrenheit.toFixed(2);
+      document.getElementById("kelvin").value = kelvin.toFixed(2);
+      document.getElementById("result").innerHTML = "Conversion complete!";
+    }
+  </script>
+</body>
+</html>
